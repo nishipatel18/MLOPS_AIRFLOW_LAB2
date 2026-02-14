@@ -3,7 +3,7 @@ import base64
 import pendulum
 import requests
 from airflow import DAG
-from airflow.providers.standard.operators.python import PythonOperator
+from airflow.operators.python_operator import PythonOperator
 from flask import Flask, redirect, render_template
 
 WEBSERVER = os.getenv("AIRFLOW_WEBSERVER", "http://airflow-apiserver:8080")
