@@ -1,1 +1,92 @@
 # MLOPS_AIRFLOW_LAB2
+# What is Airflow™?
+
+Apache Airflow is an open-source platform for developing, scheduling, and monitoring batch-oriented workflows. Airflow's extensible Python framework enables building workflows connecting with virtually any technology. A web interface helps manage the state of your workflows. Airflow is deployable in many ways, varying from a single process on your laptop to a distributed setup to support even the biggest workflows.
+
+## Dataset
+
+All three labs use the **UCI Wine Quality (Red Wine)** dataset.
+
+- **Source:** [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/wine+quality)
+- **Samples:** 1,599 red wine samples
+- **Features:** 11 physicochemical properties (fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol)
+- **Target:** Quality score (3–8)
+
+## Model
+
+- **Lab 1:** Random Forest Classifier with accuracy convergence method (similar to elbow method)
+- **Lab 2:** Random Forest Classifier with MinMaxScaler + StandardScaler preprocessing
+- **Lab 3:** Random Forest Classifier deployed on VM with email notifications
+
+## Labs Overview
+
+| Lab | Focus | Environment | Model |
+|-----|-------|-------------|-------|
+| Lab 1 | Airflow basics + ML pipeline DAG | Docker | Random Forest (elbow-style tuning) |
+| Lab 2 | Email notifications + Flask API + DAG chaining | Docker | Random Forest (Logistic Regression style pipeline) |
+| Lab 3 | VM deployment + Airflow API + email notifications | Virtual Machine | Random Forest |
+
+### Lab 1 — Airflow Basics with Docker
+- Set up Airflow using Docker Compose
+- Build a DAG pipeline: load data → preprocess → train model → evaluate
+- Uses XCom with base64 serialization to pass data between tasks
+- Determines optimal n_estimators using accuracy convergence
+
+### Lab 2 — Email Notifications + Flask API
+- Extends pipeline with BashOperator and TriggerDagRunOperator
+- Flask API (`Flask_API.py`) checks DAG run status via Airflow REST API
+- HTML templates for success/failure status pages
+- Two DAGs: `Airflow_Lab2` (ML pipeline) and `Airflow_Lab2_Flask` (Flask server)
+
+### Lab 3 — VM Deployment
+- Deploy Airflow natively on a Virtual Machine (no Docker)
+- Configure Airflow API with basic auth
+- Success email notification using SMTP
+- Trigger DAGs via CLI: `airflow dags trigger sample_dag`
+
+## Folder Structure
+```
+MLOPS_AIRFLOW_LAB2/
+├── Lab_1/
+│   ├── config/
+│   ├── dags/
+│   │   ├── data/          (file.csv, test.csv)
+│   │   ├── src/           (__init__.py, lab.py)
+│   │   └── airflow.py
+│   ├── README.md
+│   └── setup.sh
+├── Lab_2/
+│   ├── config/
+│   ├── dags/
+│   │   ├── data/          (wine_quality.csv)
+│   │   ├── src/           (__init__.py, model_development.py)
+│   │   ├── templates/     (success.html, failure.html)
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   └── Flask_API.py
+│   ├── README.md
+│   ├── cookies.txt
+│   ├── requirements.txt
+│   └── setup.sh
+├── Lab_3/
+│   ├── dags/
+│   │   ├── data/          (wine_quality.csv)
+│   │   ├── src/           (__init__.py, model_development.py, success_email.py)
+│   │   ├── __init__.py
+│   │   └── my_dag.py
+│   ├── readme.md
+│   └── requirements.txt
+├── assets/
+├── README.md
+└── setup.sh
+```
+
+## Prerequisites
+- Docker Desktop (Labs 1 & 2) — minimum 4GB RAM
+- Cloud VM (Lab 3) — 2 vCPUs, 4GB RAM
+- Python 3.8+
+
+## References
+- Product — https://airflow.apache.org/
+- Documentation — https://airflow.apache.org/docs/
+- Github — https://github.com/apache/airflow
