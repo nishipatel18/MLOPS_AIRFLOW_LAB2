@@ -1,10 +1,10 @@
 from __future__ import annotations
 import pendulum
 from airflow import DAG
-from airflow.providers.standard.operators.bash import BashOperator
-from airflow.providers.standard.operators.python import PythonOperator
-from airflow.providers.standard.operators.trigger_dagrun import TriggerDagRunOperator
-from airflow.task.trigger_rule import TriggerRule
+from airflow.operators.bash import BashOperator
+from airflow.operators.python_operator import PythonOperator
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
+from airflow.utils.trigger_rule import TriggerRule
 
 from src.model_development import (
     load_data,
