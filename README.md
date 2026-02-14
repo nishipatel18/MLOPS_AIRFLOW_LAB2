@@ -1,8 +1,4 @@
 # MLOPS_AIRFLOW_LAB2
-# What is Airflow™?
-
-Apache Airflow is an open-source platform for developing, scheduling, and monitoring batch-oriented workflows. Airflow's extensible Python framework enables building workflows connecting with virtually any technology. A web interface helps manage the state of your workflows. Airflow is deployable in many ways, varying from a single process on your laptop to a distributed setup to support even the biggest workflows.
-
 ## Dataset
 
 All three labs use the **UCI Wine Quality (Red Wine)** dataset.
@@ -81,12 +77,3 @@ MLOPS_AIRFLOW_LAB2/
 └── setup.sh
 ```
 
-## Prerequisites
-- Docker Desktop (Labs 1 & 2) — minimum 4GB RAM
-- Cloud VM (Lab 3) — 2 vCPUs, 4GB RAM
-- Python 3.8+
-
-## References
-- Product — https://airflow.apache.org/
-- Documentation — https://airflow.apache.org/docs/
-- Github — https://github.com/apache/airflow
