@@ -77,3 +77,14 @@ MLOPS_AIRFLOW_LAB2/
 └── setup.sh
 ```
 
+## Result Screenshots
+
+### Lab 1
+![LAB 1](https://github.com/user-attachments/assets/74a34929-c364-4d85-b12a-f5be3b8d7482)
+
+## Lab 2
+![LAB](https://github.com/user-attachments/assets/7893c858-612d-454f-8fa5-96ad028adacf)
+
+## Lab 3
+![LAB 3](https://github.com/user-attachments/assets/6809694e-36f5-4237-9402-5fc477a34a5b)
+
